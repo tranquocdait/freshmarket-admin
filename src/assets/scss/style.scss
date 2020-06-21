@@ -1,0 +1,67 @@
+/*
+Template Name: Admin Pro Admin
+Author: Themedesigner
+Email: niravjoshi87@gmail.com
+File: scss
+*/
+
+@import "variable";
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "app";
+@import "pages";
+@import "sidebar";
+@import "../scss/icons/font-awesome/css/font-awesome.min.css";
+@import "../scss/icons/simple-line-icons/css/simple-line-icons.css";
+@import "../scss/icons/themify-icons/themify-icons.css";
+@import "../scss/icons/material-design-iconic-font/css/materialdesignicons.min.css";
+@import "widgets";
+@import "grid";
+@import "responsive";
+@import "spinners.scss";
+@import "theme-settings.scss";
+// color css
+@import "colors/default-dark";
+.delete-modal {
+    .modal-dialog {
+        animation-name: example !important;
+        animation-duration: 0.4s !important;
+        width: 420px !important;
+    }
+}
+
+.td-number {
+    padding-right: 20px !important;
+}
+table {
+    width: 100%;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+.round {
+    margin-left: 10px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+.container {
+    display: contents;
+}
+.card-header {
+    height: 50px;
+}
+.close {
+    padding: 4px 13px;
+    margin: 0;
+    margin-top: -16px;
+    margin-right: -9px;
+    opacity: 1 !important;
+    padding-bottom: 8px;
+    text-shadow: unset;
+    background-color: white;
+    &:hover {
+        background-color: red;
+        color: #fff;
+    }
+}

@@ -1,0 +1,52 @@
+<div class="card">
+    <h5 class="card-header info-color white-text text-center py-4">
+        <strong *ngIf="data.type === 'edit'">Edit </strong>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="clickClose()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </h5>
+
+    <div class="card-body px-lg-5 pt-0">
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="text-center" style="color: #757575;" action="#!">
+            <div class="container md-1 mt-1">
+                <label class="col-md-3">Purchase ID</label>
+                <input class="form-control col-md-9" formControlName="purchaseId" [readonly]="data.type==='edit'">
+            </div>
+            <div class="container md-1 mt-1">
+                <label class="col-md-3">Product's name</label>
+                <input class="form-control col-md-9" formControlName="postName" [readonly]="data.type==='edit'">
+            </div>
+            <div class="container md-1 mt-1">
+                <label class="col-md-3">Seller Name</label>
+                <input class="form-control col-md-9" formControlName="sellerName" [readonly]="data.type==='edit'">
+            </div>
+            <div class="container md-1 mt-1">
+                <label class="col-md-3">Buyer Name</label>
+                <input class="form-control col-md-9" formControlName="buyerName" [readonly]="data.type==='edit'">
+            </div>
+            <div class="container md-1 mt-1">
+                <label class="col-md-3">Unit Price</label>
+                <input class="form-control col-md-3" formControlName="unitPrice" [readonly]="data.type==='edit'">
+                <label class="col-md-6 text-left">VND</label>
+            </div>
+            <div class="container md-1 mt-1">
+                <label class="col-md-3">Number</label>
+                <input class="form-control col-md-1 text-right" formControlName="purchaseNumber">
+                <label class="col-md-8 text-left"></label>
+            </div>
+            <div class="container md-1 mt-1">
+                <label class="col-md-3">Status Purchase</label>
+                <select class="form-control col-md-9" formControlName="statusPurchase">
+                    <option [value]="item.id" *ngFor="let item of
+                    purchaseList">{{item.status}}</option>
+                </select>
+            </div>
+            <div class="container">
+                <button class="btn btn-outline-info btn-rounded waves-effect
+                    col-md-4" type="submit" id="btn_delete" *ngIf="data.type === 'edit'">Edit</button>
+                <button class="btn btn-outline-danger btn-rounded waves-effect
+                    col-md-4" (click)="clickClose()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

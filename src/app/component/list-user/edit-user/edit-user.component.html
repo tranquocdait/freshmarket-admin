@@ -1,0 +1,63 @@
+<div class="card">
+    <h5 class="card-header info-color white-text text-center py-4">
+        <strong *ngIf="data.type === 'edit'">Edit </strong>
+        <strong *ngIf="data.type !== 'edit'">Add New </strong>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="clickClose()" id="btn">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </h5>
+
+    <div class="card-body px-lg-5 pt-0">
+        <h2 class="text-center">Thông tin cá nhân</h2>
+        <div class="text-center" *ngIf="!checkForm()">
+            <small style="color: red;">{{messageError}}</small>
+        </div>
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="text-center" style="color: #757575;" action="#!">
+            <div class="container md-1 mt-1">
+                <label class="col-md-3">User Name</label>
+                <input class="form-control col-md-9" formControlName="userName" [readonly]="data.type==='edit'" placeholder="User name">
+            </div>
+          <div class="container md-1 mt-1">
+            <label class="col-md-3">Password</label>
+            <input type="password" class="form-control col-md-9" formControlName="password" placeholder="password">
+          </div>
+          <div class="container md-1 mt-1">
+            <label class="col-md-3 text-right">Corfirm password</label>
+            <input type="password"  class="form-control col-md-9" formControlName="confirmPassword" placeholder="Confirm password">
+          </div>
+            <div class="container md-1 mt-1">
+                <label class="col-md-3">Role</label>
+                <!-- <input class="form-control col-md-9" formControlName="role"> -->
+                <select class="form-control col-md-9" formControlName="role">
+                    <option [value]="item.roleID" *ngFor="let item of
+                    roleList">{{item.roleName}}</option>
+                </select>
+            </div>
+
+            <div class="container md-1 mt-1">
+                <label class="col-md-3">FullName</label>
+                <input class="form-control col-md-9" formControlName="fullName" placeholder="Your name">
+            </div>
+            <div class="container md-1 mt-1">
+                <label class="col-md-3">Phone Number</label>
+                <input class="form-control col-md-9" formControlName="phoneNumber" placeholder="09xx xxx xxx">
+            </div>
+            <div class="container md-1 mt-1">
+                <label class="col-md-3">Email</label>
+                <input class="form-control col-md-9" formControlName="email" placeholder="name@example.com">
+            </div>
+            <div class="container md-1 mt-1">
+                <label class="col-md-3">Avatar</label>
+                <input type="file" accept="image/*" class="form-control col-md-9" formControlName="avatarURL" (change)='changeToBase64($event)'>
+            </div>
+            <div class="container">
+                <button class="btn btn-outline-info btn-rounded waves-effect
+                    col-md-4" type="submit" id="btn_delete" *ngIf="data.type === 'edit'">Edit</button>
+                    <button class="btn btn-outline-info btn-rounded waves-effect
+                    col-md-4" type="submit" id="btn_delete" *ngIf="data.type !== 'edit'">Add New</button>
+                <button class="btn btn-outline-danger btn-rounded waves-effect
+                    col-md-4" (click)="clickClose()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

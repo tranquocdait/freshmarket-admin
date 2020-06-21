@@ -1,0 +1,79 @@
+<div class="container ">
+    <input #search class="form-control col-md-3" type="text" placeholder="Search" aria-label="Search" (keyup.enter)="searchUser(search.value)">
+    <button class="btn" (click)="searcPost(search.value)"><i class="fa fa-search fa-lg pb-2"></i></button>
+</div>
+<div class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 table-hover">
+    <ng-container matColumnDef="imageURL">
+        <th mat-header-cell *matHeaderCellDef > </th>
+        <td mat-cell *matCellDef="let element">
+            <span class="round"><img src="{{element.imageURL}}" alt="user" width="50" height="50"></span>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="postId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Post ID </th>
+        <td mat-cell *matCellDef="let element" > {{element.postId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="userName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> User name </th>
+        <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="postName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Post name </th>
+        <td mat-cell *matCellDef="let element"> {{element.postName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+        <td mat-cell *matCellDef="let element" id='lim-des'> {{element.description|convertString:10}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="unitPrice">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Unit Price </th>
+        <td mat-cell *matCellDef="let element" > {{element.unitPrice|convertAmount}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+        <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateOfPost">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Of Post </th>
+        <td mat-cell *matCellDef="let element"> {{element.dateOfPost| date:"dd/MM/yyy"}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="province">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Province </th>
+        <td mat-cell *matCellDef="let element"> {{element.province.nameProvince}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="calculationUnit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Calculation Unit </th>
+        <td mat-cell *matCellDef="let element"> {{element.calculationUnit.unitName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+        <td mat-cell *matCellDef="let element"> {{element.category.nameCategory}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef> Edit </th>
+        <td mat-cell *matCellDef="let element">
+            <button class="btn" (click)='editPost(element)'><i class="fa fa-pencil-square-o"></i></button>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Delete </th>
+        <td mat-cell *matCellDef="let element">
+            <button class="btn" (click)='deletePost(element)'><i class="fa fa-trash"></i></button>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[10, 20, 40]" showFirstLastButtons></mat-paginator>
+</div>
