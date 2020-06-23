@@ -85,7 +85,7 @@ export class ListItemComponent implements OnInit {
             if (data.status === 'success') {
                 const temp = [];
                 data.data.forEach((element, index) => {
-                    let post = new PurchaseElement();
+                    const post = new PurchaseElement();
                     post.purchaseId = element.id;
                     post.postId = element.post.id;
                     post.sellerName = element.post.user.userName;
@@ -99,8 +99,11 @@ export class ListItemComponent implements OnInit {
                 });
                 this.dataList = temp;
                 this.setDataSource();
-            };
-        }
-        );
+            }
+        });
+    }
+
+    searchItem(value: string): void {
+        //Todo
     }
 }
