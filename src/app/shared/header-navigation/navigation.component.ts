@@ -25,7 +25,6 @@ export class NavigationComponent implements AfterViewInit {
 
   logout() {
     this.localStoreManager.removeToken();
-    //location.reload();
     this.router.navigateByUrl('/login');
   }
 
