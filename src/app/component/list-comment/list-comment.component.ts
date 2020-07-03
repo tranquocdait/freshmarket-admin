@@ -48,7 +48,7 @@ export class ListCommentComponent implements OnInit {
             this.dataSource = new MatTableDataSource(this.dataList);
             this.dataSource.sort = this.sort;
             this.dataSource.paginator = this.paginator;
-        }, 1000);
+        }, 2000);
 
     }
     deleteItem(element: any) {

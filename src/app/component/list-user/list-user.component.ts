@@ -56,7 +56,7 @@ export class ListUserComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.dataList);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
-    }, 1000);
+    }, 2000);
 
   }
   deleteUser(element: any) {

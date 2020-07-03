@@ -18,8 +18,7 @@ export class ListPostComponent implements OnInit {
     dataSource: MatTableDataSource<PostElement>;
     dataList: PostElement[] = null;
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-    displayedColumns: string[] = ['imageURL', 'postId', 'postName', 'userName', 'description', 'unitPrice', 'address',
-     'dateOfPost', 'province', 'category', 'calculationUnit', 'edit', 'delete'];
+    displayedColumns: string[] = ['imageURL', 'postId', 'postName', 'userName', 'description', 'unitPrice', 'address', 'dateOfPost', 'province', 'category', 'calculationUnit', 'edit', 'delete'];
     @ViewChild(MatSort, { static: true }) sort: MatSort;
     constructor(private modalService: NgbModal, private changeDetectorRefs: ChangeDetectorRef, private endpointFactory: EndpointFactory) {
 
@@ -54,7 +53,7 @@ export class ListPostComponent implements OnInit {
 
                 });
                 this.dataList = temp;
-            }
+            };
         }
         );
     }
@@ -63,12 +62,12 @@ export class ListPostComponent implements OnInit {
             this.dataSource = new MatTableDataSource(this.dataList);
             this.dataSource.sort = this.sort;
             this.dataSource.paginator = this.paginator;
-        }, 1000);
+        }, 2000);
 
     }
     deletePost(element: any) {
         const modalRef = this.modalService.open(DeletePostComponent, { size: 'lg', windowClass: 'delete-modal', centered: true });
-        modalRef.componentInstance.data = { data: element };
+        modalRef.componentInstance.data = { data: element }
         modalRef.componentInstance.output.subscribe((res) => {
             if (res === 'success') {
                 this.setData();
@@ -91,7 +90,7 @@ export class ListPostComponent implements OnInit {
             if (data.status === 'success') {
                 const temp = [];
                 data.data.forEach((elementInfo, index) => {
-                    const post = new PostElement();
+                    let post = new PostElement();
                     const element = elementInfo.post;
                     post.postId = element.id;
                     post.postName = element.postName;
@@ -110,7 +109,7 @@ export class ListPostComponent implements OnInit {
                 });
                 this.dataList = temp;
                 this.setDataSource();
-            }
+            };
         }
         );
     }
